@@ -14,15 +14,12 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('products.index');
 });
 
 Route::resource('products', ProductController::class)
     ->only(['index', 'list']);
 
-
-// Route::resource('import', ProductController::class)
-//     ->only(['import', 'store']);
 
 Route::get('/import', [ProductController::class, 'import'])->name('import');
 Route::post('/import', [ProductController::class, 'store'])->name('import');
