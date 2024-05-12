@@ -17,9 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->decimal('weight');
+            $table->string('weight');
             $table->string('category');
-            $table->timestamps();
         });
     }
 
