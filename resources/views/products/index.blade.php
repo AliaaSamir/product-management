@@ -56,11 +56,12 @@
             <i class="bi bi-list"></i> Products
         </div>
         <div class="col-md-3 d-flex justify-content-end">
-            {{$products->links()}}
+            {{$products->onEachSide(1)->links()}}
         </div>
     </div>
     </div>
   <div class="card-body">
+    @if (count($products) > 0)
     <div class="table-responsive">
         <table class="table"> 
             <thead>
@@ -110,6 +111,9 @@
             </tbody>
         </table>
     </div>
+    @else 
+        <p class="alert alert-info"> No products found </p>
+    @endif
   </div>
 </div>
 @endsection

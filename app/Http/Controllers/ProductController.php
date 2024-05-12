@@ -46,13 +46,6 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-
-        // self::importProducts('D:\wamp\www\product-management\storage\app\files\import_a68d493e63ef0c28c3cb2bad3fc846ef.xml');
-        // die();
-        // $this->validate($request, [
-        //     'file' => 'required|file|max:10240', // max file size of 10MB
-        // ]);
-
         $receiver = new FileReceiver('file', $request, HandlerFactory::classFromRequest($request));
 
         if (!$receiver->isUploaded()) {
@@ -69,7 +62,6 @@ class ProductController extends Controller
             $file->move(storage_path('app/files'), $fileName);
             // parse xml and save data to our database
             $filePath = 'app\\files\\' . $fileName;
-            // self::importProducts($filePath);
             self::importProducts(storage_path($filePath));
             return [
                 'filename' => $fileName
@@ -134,7 +126,6 @@ class ProductController extends Controller
         // Close the main XMLReader
         $reader->close();
         if (!empty($productData)) {
-            // var_dump($productData);
             Product::insert($productData);
             $productData = [];
         }

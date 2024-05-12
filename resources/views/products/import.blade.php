@@ -12,7 +12,7 @@
 
               <div class="card-body">
                   <div id="upload-container" class="text-center">
-                      <button id="browseFile" class="btn btn-primary">Brows File</button>
+                      <button id="browseFile" class="btn btn-primary">Choose File</button>
                   </div>
                   <div  style="display: none" class="progress mt-3" style="height: 25px">
                       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%; height: 100%"></div>
@@ -29,7 +29,7 @@
 <script type="text/javascript">
     let browseFile = $('#browseFile');
     let resumable = new Resumable({
-        target: "{{ route('import') }}", // rout for upload
+        target: window.location.href, // rout for upload
         query:{_token:'{{ csrf_token() }}'} ,// CSRF token
         fileType: ['xml'],
         chunkSize: 10*1024*1024,
