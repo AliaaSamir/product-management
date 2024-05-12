@@ -13,9 +13,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('products.index');
-});
+Route::get('/', [ProductController::class, 'index']);
 
 Route::resource('products', ProductController::class)
     ->only(['index', 'list']);
